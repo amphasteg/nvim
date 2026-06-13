@@ -9,6 +9,13 @@ local lsps = {
 	"eslint",
 	"tsserver",
 	"roslyn-language-server",
+  "html-lsp",
+  "tailwindcss-language-server",
+  "css-lsp",
+  "typescript-language-server",
+  "eslint-lsp",
+  "tailwindcss-language-server",
+
 }
 
 return {
@@ -20,9 +27,9 @@ return {
 		for i, v in ipairs(lsps) do
 			vim.lsp.config(v, { capabilities = capabilities })
 			vim.lsp.enable(v)
-			vim.diagnostic.config({ virtual_text = true, update_in_insert = true })
 		end
 
+    vim.diagnostic.config({ virtual_text = true, update_in_insert = true })
 		vim.lsp.config("codebook", {})
 	end,
 
