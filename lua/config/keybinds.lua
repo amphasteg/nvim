@@ -5,6 +5,8 @@ vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left<CR>")
 --LSP
 vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
 vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
+vim.keymap.set("n", "]g", vim.diagnostic.goto_next)
+vim.keymap.set("n", "[g", vim.diagnostic.goto_prev)
 
 -- Debugging 
 local dap = require("dap")
