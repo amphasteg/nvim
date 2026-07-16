@@ -12,3 +12,6 @@ vim.keymap.set("n", "[g", vim.diagnostic.goto_prev)
 local dap = require("dap")
 vim.keymap.set('n', '<leader>dt', dap.toggle_breakpoint, {})
 vim.keymap.set('n', '<leader>dc', dap.continue, {})
+
+-- Default keybinds
+-- SHIFT+K = view function documentation
