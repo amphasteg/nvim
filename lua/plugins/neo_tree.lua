@@ -24,7 +24,7 @@ return {
 			"nvim-neo-tree/neo-tree.nvim", -- makes sure that this loads after Neo-tree.
 		},
 		config = function()
-			require("lsp-file-operations").setup()
+			require("nvim-file-operations").setup()
 		end,
 	},
 	{
