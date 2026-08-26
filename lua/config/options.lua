@@ -4,10 +4,6 @@ vim.opt.expandtab = true
 vim.opt.tabstop=2
 vim.opt.softtabstop=2
 vim.opt.shiftwidth=2
-vim.opt.smartindent = false
-
-vim.cmd('autocmd BufEnter * set formatoptions-=cro')
-vim.cmd('autocmd BufEnter * setlocal formatoptions-=cro')
 
 vim.api.nvim_create_user_command("LintInfo", function()
   local filetype = vim.bo.filetype
