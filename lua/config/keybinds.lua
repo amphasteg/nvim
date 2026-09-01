@@ -21,4 +21,6 @@ vim.keymap.set("n", "<leader>dt", dap.toggle_breakpoint, {})
 vim.keymap.set("n", "<leader>dc", dap.continue, {})
 
 -- Default key-binds
--- SHIFT+K = view function documentation
+-- K = view function documentation
+-- gd = Go to function declaration
+-- G = Go to implementation
