@@ -1,7 +1,6 @@
 local lsps = {
 	"lua_ls",
 	"rust_analyzer",
-	"codebook",
 	"clangd",
 	"stylua",
 	"tsserver",
@@ -30,7 +29,6 @@ return {
 		end
 
     vim.diagnostic.config({ virtual_text = true, update_in_insert = true })
-		vim.lsp.config("codebook", {})
 	end,
 
 	dependencies = {
