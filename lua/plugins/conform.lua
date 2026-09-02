@@ -11,7 +11,7 @@
       lua = { "stylua" },
       python = { "isort", "black" },
       javascript = { "prettierd", "prettier", stop_after_first = true },
-      c = { "clang-format" }, 
+      c = { "clang_format" }, 
     },
     -- Set default options
     default_format_opts = {
@@ -24,10 +24,13 @@
       shfmt = {
         append_args = { "-i", "2" },
       },
+      clang_format = {
+        append_args = {"--style={ColumnLimit: 50}"},
+      },
     },
-  },
   init = function()
     -- If you want the formatexpr, here is the place to set it
     vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
   end,
+}
 }
