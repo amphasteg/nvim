@@ -12,6 +12,10 @@ vim.keymap.set("n", "<leader>gf", function()
 		timeout_ms = 500,
 	})
 end, {})
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = "Go to definition" })
+vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { desc = "Go to implementation" })
+vim.keymap.set('n', 'gr', vim.lsp.buf.references, { desc = "Go to references" })
+vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = "Hover documentation" })
 vim.keymap.set("n", "]g", vim.diagnostic.goto_next)
 vim.keymap.set("n", "[g", vim.diagnostic.goto_prev)
 
@@ -19,8 +23,3 @@ vim.keymap.set("n", "[g", vim.diagnostic.goto_prev)
 local dap = require("dap")
 vim.keymap.set("n", "<leader>dt", dap.toggle_breakpoint, {})
 vim.keymap.set("n", "<leader>dc", dap.continue, {})
-
--- Default key-binds
--- K = view function documentation
--- gd = Go to function declaration
--- G = Go to implementation
