@@ -10,24 +10,31 @@ return {
 		local dap, dapui = require("dap"), require("dapui")
 
 		dapui.setup()
-    require("nvim-dap-virtual-text").setup()
+
+		require("nvim-dap-virtual-text").setup()
 
 		dap.adapters.codelldb = {
 			type = "executable",
 			command = "codelldb",
-			detached = false,
+		}
+
+		dap.adapters.lldb = {
+			type = "executable",
+			command = "lldb-dap",
+			name = "lldb",
 		}
 
 		dap.configurations.c = {
 			{
 				name = "Launch file",
-				type = "codelldb",
+				type = "lldb",
 				request = "launch",
 				program = function()
 					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
 				end,
 				cwd = "${workspaceFolder}",
 				stopOnEntry = false,
+        args = {},
 			},
 		}
 
