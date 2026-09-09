@@ -9,35 +9,73 @@ return {
 	config = function()
 		local dap, dapui = require("dap"), require("dapui")
 
-		dapui.setup()
-
-		require("nvim-dap-virtual-text").setup()
+		dapui.setup({
+			layouts = {
+				{
+					elements = {
+						{
+							id = "scopes",
+							size = 0.25,
+						},
+						{
+							id = "breakpoints",
+							size = 0.25,
+						},
+						{
+							id = "stacks",
+							size = 0.25,
+						},
+						{
+							id = "watches",
+							size = 0.25,
+						},
+					},
+					position = "left",
+					size = 40,
+				},
+				{
+					elements = {
+						{
+							id = "repl",
+							size = 0.5,
+						},
+						{
+							id = "console",
+							size = 0.5,
+						},
+					},
+					position = "bottom",
+					size = 10,
+				},
+			},
+			mappings = {
+				edit = "e",
+				expand = { "<CR>", "<2-LeftMouse>" },
+				open = "o",
+				remove = "d",
+				repl = "r",
+				toggle = "t",
+			},
+		})
 
 		dap.adapters.codelldb = {
 			type = "executable",
 			command = "codelldb",
-		}
-
-		dap.adapters.lldb = {
-			type = "executable",
-			command = "lldb-dap",
-			name = "lldb",
+			detached = false,
 		}
 
 		dap.configurations.c = {
 			{
 				name = "Launch file",
-				type = "lldb",
+				type = "codelldb",
 				request = "launch",
 				program = function()
 					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
 				end,
 				cwd = "${workspaceFolder}",
 				stopOnEntry = false,
-        args = {},
 			},
 		}
-
 		dap.listeners.before.attach.dapui_config = function()
 			dapui.open()
 		end
@@ -45,10 +83,14 @@ return {
 			dapui.open()
 		end
 		dap.listeners.before.event_terminated.dapui_config = function()
-			dapui.close()
+			vim.schedule(function()
+				dapui.close()
+			end)
 		end
 		dap.listeners.before.event_exited.dapui_config = function()
-			dapui.close()
+			vim.schedule(function()
+				dapui.close()
+			end)
 		end
 	end,
 }
