@@ -49,6 +49,6 @@ vim.keymap.set("n", "<leader>ds", function()
 	widgets.centered_float(widgets.scopes)
 end)
 
-vim.keymap.set("n", "<leader>d?", function()
+vim.keymap.set("n", "<leader>?", function()
 	require("dapui").eval(nil, { enter = true })
 end)
