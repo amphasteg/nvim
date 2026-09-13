@@ -62,6 +62,9 @@ return {
 			type = "executable",
 			command = "codelldb",
 			detached = false,
+      options = {
+        initialize_timeout_sec = 60
+      }
 		}
 
 		dap.configurations.c = {
@@ -69,13 +72,26 @@ return {
 				name = "Launch file",
 				type = "codelldb",
 				request = "launch",
-				program = function()
-					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-				end,
 				cwd = "${workspaceFolder}",
 				stopOnEntry = false,
 			},
 		}
+
+		dap.listeners.before["initialize"]["c-debug"] = function(body)
+			if body.filetype == "c" then
+				local program = vim.fn.input("Path to executable: ", vim.fs.joinpath(vim.fn.getcwd(), "/"), "file")
+				local args = vim.fn.input("Additional args: ")
+
+				local argsTable = {}
+				for k, v in string.gmatch(args, "([^ ]+)") do
+					argsTable[#argsTable + 1] = k
+				end
+
+        body.config.program = program
+        body.config.args = argsTable
+			end
+		end
+
 		dap.listeners.before.attach.dapui_config = function()
 			dapui.open()
 		end
