@@ -9,9 +9,9 @@ return {
         auto_integrations = true,
         color_overrides = {
           all = {
-            mantle = "#171717",
-            crust = "#171717",
-            base = "#1A1A1A",
+            mantle = "#030303",
+            crust = "#030303",
+            base = "#000000",
           },
         }
       })
