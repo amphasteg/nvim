@@ -14,7 +14,7 @@ local lsps = {
   "typescript-language-server",
   "eslint-lsp",
   "tailwindcss-language-server",
-
+  "neocmakelsp",
 }
 
 return {
@@ -23,7 +23,7 @@ return {
 	config = function()
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-		for i, v in ipairs(lsps) do
+		for _, v in ipairs(lsps) do
 			vim.lsp.config(v, { capabilities = capabilities })
 			vim.lsp.enable(v)
 		end
