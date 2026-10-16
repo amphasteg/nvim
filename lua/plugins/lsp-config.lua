@@ -8,12 +8,13 @@ local lsps = {
 	"eslint",
 	"tsserver",
 	"roslyn-language-server",
-  "html-lsp",
-  "tailwindcss-language-server",
-  "css-lsp",
-  "typescript-language-server",
-  "eslint-lsp",
-  "tailwindcss-language-server",
+	"html-lsp",
+	"tailwindcss-language-server",
+	"css-lsp",
+	"typescript-language-server",
+	"eslint-lsp",
+	"tailwindcss-language-server",
+	"neocmake",
 }
 
 return {
@@ -27,7 +28,7 @@ return {
 			vim.lsp.enable(v)
 		end
 
-    vim.diagnostic.config({ virtual_text = true, update_in_insert = true })
+		vim.diagnostic.config({ virtual_text = true, update_in_insert = true })
 	end,
 
 	dependencies = {
@@ -35,6 +36,6 @@ return {
 		{ "neovim/nvim-lspconfig", lazy = false },
 	},
 	opts = {
-		ensure_installed = { lsps },
+		ensure_installed = lsps,
 	},
 }
