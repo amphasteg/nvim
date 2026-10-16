@@ -14,7 +14,6 @@ local lsps = {
   "typescript-language-server",
   "eslint-lsp",
   "tailwindcss-language-server",
-  "neocmakelsp",
 }
 
 return {
