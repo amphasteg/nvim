@@ -15,6 +15,7 @@ local lsps = {
 	"eslint-lsp",
 	"tailwindcss-language-server",
 	"neocmake",
+	"svelte",
 }
 
 return {
